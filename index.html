@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Search</title>
+    <style>
+      body {
+        background-color: #041a07;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      #Heading {
+        margin-left: 32rem;
+        color: white;
+      }
+      .origin-dropdown {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+      }
+      .label {
+        font-family: Arial, sans-serif;
+        font-size: 9px;
+        color: #a3a097;
+        margin-left: 32rem;
+        max-width: 200px;
+        background-color: #242121;
+        padding-top: 5px;
+        padding-left: 18px;
+      }
+     #origin , #destination {
+        width: 218px;
+        margin-left: 512px;
+        padding-left: 13px;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        background-color: #242121;
+        color: #fff;
+        border: none;
+        font-size: 14px;
+      }
+      .origin-dropdown1 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        margin-top: 30px;
+      }
+      .origin-dropdown2 {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+      }
+      .label1 {
+        font-family: Arial, sans-serif;
+        font-size: 9px;
+        color: #a3a097;
+        margin-left: 32rem;
+        max-width: 200px;
+        background-color: #17300c;
+        padding-top: 5px;
+        padding-left: 18px;
+      }
+      #cabin {
+        width: 218px;
+        margin-left: 512px;
+        padding-left: 15px;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        background-color: #17300c;
+        color: #fff;
+        border-bottom-color: white;
+        font-size: 14px;
+      }
+      .pro-filter {
+        width: 160px;
+        height: 5px;
+        background-color: rgb(8, 8, 8);
+        margin-top: 30px;
+        padding: 30px;
+        margin-left: 510px;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 15px;
+      }
+      /* Hide default HTML checkbox */
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      /* The slider */
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #5c5858;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 17px;
+        width: 17px;
+        background-color: rgb(43, 41, 41);
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+      input:checked + .slider:before {
+        -webkit-transform: translateX(19px);
+        -ms-transform: translateX(19px);
+        transform: translateX(19px);
+      }
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 30px;
+      }
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      #nam {
+        color: rgb(238, 147, 28);
+      }
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      #pro-filters {
+        color: white;
+      }
+      button {
+        background-color: rgb(65, 177, 211);
+        color: rgb(245, 240, 240);
+        height: 30px;
+        width: 70px;
+        margin-left: 510px;
+        margin-top: 30px;
+        border-radius: 5px;
+      }
+      .box-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .box {
+        background-color: #0e572d;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px;
+        width: 171px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .box h3 {
+        margin-top: 15px;
+      }
+      .box h6 {
+       font-size: x-small;
+       margin-top: 8px;
+      }
+      .box p {
+        font-size: 14px;
+        margin: 5px 0;
+      }
+      .box .price {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 5px 5px;
+      }
+      .box .price span {
+        font-size: 12px;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h4 id="Heading">Choose Origin & Destination Airports:</h4>
+      <div class="origin-dropdown">
+        <span class="label">Origin</span>
+          <select id = "origin">
+            <option value="SYD">SYD</option>
+            <option value="JFK">JFK</option>
+            <option value="DEL">DEL</option>
+            <option value="BOM">BOM</option>
+            <option value="BNE">BNE</option>
+            <option value="BLR">BLR</option>
+            <!-- Add more options here -->
+          </select>
+      </div>
+      <div class="origin-dropdown1">
+        <span class="label">Destination</span>
+          <select id ="destination">
+            <option value="JFK">JFK</option>
+            <option value="DEL">DEL</option>
+            <option value="SYD">SYD</option>
+            <option value="LHR">LHR</option>
+            <option value="CDG">CDG</option>
+            <option value="DOH">DOH</option>
+            <option value="SIN">SIN</option>
+          </select>
+      </div>
+      <div class="origin-dropdown2">
+        <span class="label1">Cabin Selection</span>
+        <div class="dropdown">
+          <select id="cabin">
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+            <option value="First">First</option>
+          </select>
+        </div>
+      </div>
+      <div class="pro-filter">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <label id="pro-filters"
+          >Show <label id="nam"> Pro Filters</label></label
+        >
+      </div>
+      <button id="searchBtn" type="button">Search</button>
+      <div class="box-container" id="resultsContainer">
+        <!-- Results will be inserted here dynamically -->
+      </div>
+    
+      <script src="scripts.js"></script>
+    </body>
+    </html>
+    </div>
+  </body>
+</html>
